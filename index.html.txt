@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore the World | Travel Agency</title>
+    <link rel="stylesheet" href="styles.css">
+<script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        let name = document.getElementById("name").value;
+        let destination = document.getElementById("destination").value;
+        
+        fetch('/api/book?name=' + name + '&destination=' + destination, {
+            method: 'POST'
+        })
+        .then(response => response.text())
+        .then(data => alert(data));
+    });
+</script>
+
+</head>
+<body>
+    <header>
+        <h1>Welcome to Explore the World</h1>
+        <nav>
+            <a href="#destinations">Destinations</a>
+            <a href="#booking">Book a Trip</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+    </header>
+
+    <section id="destinations">
+        <h2>Popular Destinations</h2>
+        <div class="destination">
+            <img src="paris.jpg" alt="Paris">
+            <p>Experience the beauty of Paris.</p>
+        </div>
+    </section>
+
+    <section id="booking">
+        <h2>Book Your Trip</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+            <label for="destination">Destination:</label>
+            <select id="destination">
+                <option>Paris</option>
+                <option>Dubai</option>
+                <option>New York</option>
+            </select>
+            <button type="submit">Book Now</button>
+        </form>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: travel@explore.com</p>
+        <p>Phone: +123-456-7890</p>
+    </section>
+
+    <footer>
+        <p>© 2024 Explore the World. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
